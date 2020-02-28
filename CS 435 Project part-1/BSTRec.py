@@ -118,21 +118,21 @@ def findPrevRec(node, key):
   else:
     return findPrevRec(node.right, key, auto=node)
   
-def sortHelper(child, arr):
+def helper(child, array):
   if child is None:
     return None
-  sortHelper(child.left, arr)
-  arr.append(child.key)
-  sortHelper(child.right, arr)
+  helper(child.left, array)
+  array.append(child.key)
+  helper(child.right, array)
 
-def sort(arr):
-  if len(arr) == 0: return None
-  root = Node(arr[0])
-  for element in arr[1:]:
-    root.insertRec(element)
-  sorted_arr = list()
-  sortHelper(root, sorted_arr)
-  return sorted_arr
+def sort(array):
+  if len(array) == 0: 
+    return None
+  root = Node(array[0])
+  for val in array[1:]: root.insertRec(val)
+  sortedArray = list()
+  helper(root, sortedArray)
+  return sortedArray
 
 def printInorder(root):  
     if root is not None:
