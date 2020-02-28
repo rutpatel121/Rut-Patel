@@ -45,7 +45,9 @@ class Node:
         self = None
         return move
       elif self.right is not None:
-        inorder_successor = self.right.findMinRec()
+        successor_inorder = self.right
+        while right.left is not None:
+          successor_inorder = successor_inorder.left
         self.key = inorder_successor.key
         self.right = self.right.deleteRec(inorder_successor.key)  
     return self
